@@ -1,0 +1,657 @@
+cuda-barnes-hut/
+├── src/
+│   ├── cpu/
+│   ├── openmp/
+│   ├── cuda/
+│   └── simulation/
+├── include/
+├── benchmarks/
+├── visualization/
+├── tests/
+├── docs/
+├── CMakeLists.txt
+└── README.md
+
+README
+│
+├── Problem
+├── Barnes-Hut algorithm
+├── CPU implementation
+├── OpenMP implementation
+├── CUDA implementation
+├── Optimization
+├── Experiments
+├── Results
+├── Visualization
+└── Conclusions
+
+Graphs
+Runtime vs particles
+Speedup vs particles
+Accuracy vs θ
+GPU vs CPU
+OpenMP scaling
+CUDA scaling
+
+
+🎥 Demo
+
+A short video showing:
+
+Galaxy simulation
+        ↓
+Change particle count
+        ↓
+Change θ
+        ↓
+Switch CPU → CUDA
+        ↓
+Show performance difference
+
+
+                    N-BODY SIMULATION
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+          EXACT                    BARNES-HUT
+        O(N²)                     O(N log N)
+             │                           │
+       ┌─────┴─────┐             ┌───────┴───────┐
+       │           │             │               │
+      CPU         CUDA          CPU             CUDA
+       │           │             │               │
+       │           │          OpenMP             │
+       │           │             │               │
+       └─────┬─────┘             └───────┬───────┘
+             │                           │
+             └───────────┬───────────────┘
+                         │
+                    BENCHMARKING
+                         │
+             ┌───────────┼───────────┐
+             │           │           │
+          Runtime      Accuracy    Scaling
+             │           │           │
+             └───────────┼───────────┘
+                         │
+                    VISUALIZATION
+
+
+
+① C++ N-body
+       ↓
+② Barnes-Hut CPU
+       ↓
+③ Accuracy + θ
+       ↓
+④ OpenMP
+       ↓
+⑤ CUDA N-body
+       ↓
+⑥ CUDA Barnes-Hut
+       ↓
+⑦ CUDA optimization
+       ↓
+⑧ n-dimensional version
+       ↓
+⑨ Benchmarking
+       ↓
+⑩ Visualization
+       ↓
+⑪ Research report
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🚀 CUDA Barnes–Hut N-Body — Roadmap
+Phase 0 — Project setup
+
+Goal: Create a clean project structure.
+
+Learn/use:
+
+C++
+CMake
+Git
+CUDA
+OpenMP
+basic benchmarking
+
+Structure:
+
+cuda-barnes-hut/
+├── src/
+│   ├── cpu/
+│   ├── openmp/
+│   ├── cuda/
+│   └── simulation/
+├── include/
+├── benchmarks/
+├── visualization/
+├── tests/
+├── docs/
+├── CMakeLists.txt
+└── README.md
+Phase 1 — Naive N-Body CPU
+
+Goal: Establish the ground-truth implementation.
+
+Implement:
+
+F
+i
+	​
+
+=
+j
+
+=i
+∑
+	​
+
+F
+ij
+	​
+
+
+Start with 2D or 3D, not n-dimensional yet.
+
+Implement:
+
+particles
+position
+velocity
+mass
+gravitational force
+acceleration
+timestep integration
+
+Complexity:
+
+O(N
+2
+)
+
+Test with:
+
+N = 100
+N = 1,000
+N = 5,000
+N = 10,000
+Deliverable
+
+A working galaxy simulation + runtime measurements.
+
+Phase 2 — Barnes–Hut CPU
+
+Now implement the actual algorithm.
+
+For 2D:
+
+QuadTree
+
+For 3D:
+
+Octree
+
+Each node stores things like:
+
+center of mass
+total mass
+bounding box
+children
+
+Implement:
+
+tree construction
+particle insertion
+center-of-mass calculation
+force approximation
+particle update
+
+Complexity should approach:
+
+O(NlogN)
+Important
+
+Compare:
+
+Naive N-body
+vs
+Barnes-Hut
+
+Check:
+
+runtime
+force error
+trajectory differences
+
+This becomes your first major experiment.
+
+Phase 3 — Barnes–Hut Accuracy
+
+Introduce the famous θ parameter.
+
+Test:
+
+θ = 0.2
+θ = 0.5
+θ = 0.8
+θ = 1.0
+
+Measure:
+
+θ
+│
+├── execution time
+└── force error
+
+Your goal is to demonstrate:
+
+Accuracy ↔ Performance trade-off
+
+This is where the project starts becoming research-worthy.
+
+Phase 4 — Multi-Core CPU
+
+Now use OpenMP.
+
+Parallelize:
+
+#pragma omp parallel for
+
+around the expensive particle-force calculations.
+
+Benchmark:
+
+1 core
+2 cores
+4 cores
+8 cores
+16 cores
+...
+
+Calculate:
+
+Speedup=
+T
+p
+	​
+
+T
+1
+	​
+
+	​
+
+
+and
+
+Efficiency=
+p
+Speedup
+	​
+
+
+Now you have a proper parallel-computing experiment.
+
+Phase 5 — CUDA Fundamentals
+
+Before touching Barnes–Hut, make sure you're comfortable writing CUDA kernels.
+
+Implement small exercises:
+
+1. Vector addition
+2. SAXPY
+3. Particle update
+4. Naive N-body CUDA
+
+The last one is particularly important.
+
+Take your CPU O(N
+2
+) implementation and make:
+
+CPU N-body
+      ↓
+CUDA N-body
+
+Each CUDA thread handles one particle.
+
+You'll learn:
+
+threads
+blocks
+grids
+global memory
+shared memory
+coalesced memory
+synchronization
+CUDA events
+memory transfers
+Phase 6 — CUDA Barnes–Hut 🔥
+
+Now comes the difficult part.
+
+GPU implementation of Barnes–Hut is harder because tree algorithms are irregular.
+
+You'll need to investigate:
+
+Particle data
+     ↓
+Tree construction
+     ↓
+Tree representation
+     ↓
+GPU traversal
+     ↓
+Force calculation
+
+Potential approaches:
+
+Approach A — CPU tree + GPU force calculation
+CPU
+ ↓
+Build tree
+ ↓
+GPU
+ ↓
+Traverse tree + calculate forces
+
+Start here.
+
+Much easier.
+
+Approach B — GPU tree construction
+
+Later:
+
+GPU
+ ↓
+Build tree
+ ↓
+GPU traversal
+ ↓
+GPU force calculation
+
+This is much harder, but potentially much more impressive.
+
+Phase 7 — GPU Optimization
+
+Once the CUDA version works, don't immediately optimize everything.
+
+Profile it first.
+
+Investigate:
+
+global memory accesses
+shared memory
+occupancy
+branch divergence
+memory transfer overhead
+kernel execution time
+tree traversal cost
+
+Use NVIDIA tools such as:
+
+Nsight Systems
+Nsight Compute
+
+Then optimize one bottleneck at a time.
+
+Phase 8 — n-Dimensional Generalization
+
+Only after the 2D/3D version works should you generalize.
+
+Create something conceptually like:
+
+Particle<Dim>
+
+and:
+
+BarnesHutTree<Dim>
+
+Then experiment with:
+
+2D
+3D
+4D
+5D
+...
+
+The project title becomes much more interesting:
+
+CUDA-Accelerated Barnes–Hut Simulation in Arbitrary Dimensions
+
+But don't make n-dimensionality your first priority.
+
+Correct + fast 3D > broken 10D.
+
+Phase 9 — Serious Benchmarking
+
+This is where you'll collect the results for your portfolio.
+
+Test:
+
+Particle count
+1K
+10K
+50K
+100K
+500K
+1M
+5M
+Algorithms
+Naive CPU
+Barnes-Hut CPU
+OpenMP Barnes-Hut
+CUDA Naive
+CUDA Barnes-Hut
+θ
+0.2
+0.5
+0.8
+1.0
+CPU cores
+1
+2
+4
+8
+16
+...
+
+Record:
+
+execution time
+speedup
+GPU utilization
+memory usage
+kernel time
+CPU-GPU transfer time
+force error
+energy error
+Phase 10 — Visualization
+
+Now make it look 🔥.
+
+Build a visualization showing:
+
+┌────────────────────────────────────┐
+│ CUDA Barnes-Hut Galaxy Simulation  │
+│                                    │
+│        ✦      ·                    │
+│    ·       ✦          ·            │
+│       ✦ ✦✦✦✦                      │
+│     · ✦████✦ ·                    │
+│       ✦✦✦✦                        │
+│                                    │
+│ Particles: 1,000,000               │
+│ θ: 0.5                             │
+│ FPS: 72                            │
+│ GPU: RTX 4070 Ti Super             │
+└────────────────────────────────────┘
+
+Possible technologies:
+
+OpenGL
+SDL2
+GLFW
+ImGui
+
+Don't spend too much time here initially.
+
+Performance and correctness matter more than pretty graphics.
+
+Phase 11 — Research Analysis
+
+Now turn your project into something you can actually discuss with a professor.
+
+Your main questions could be:
+
+Research Question 1
+
+How does CUDA acceleration scale with increasing particle count?
+
+Research Question 2
+
+What is the performance/accuracy trade-off associated with Barnes–Hut's θ parameter?
+
+Research Question 3
+
+At what particle count does GPU acceleration become beneficial compared with multi-core CPU execution?
+
+Research Question 4
+
+How does irregular tree traversal affect GPU performance?
+
+That last one is particularly interesting.
+
+Phase 12 — Final Portfolio
+
+Your final repository should contain:
+
+README
+│
+├── Problem
+├── Barnes-Hut algorithm
+├── CPU implementation
+├── OpenMP implementation
+├── CUDA implementation
+├── Optimization
+├── Experiments
+├── Results
+├── Visualization
+└── Conclusions
+
+And ideally:
+
+📊 Graphs
+Runtime vs particles
+Speedup vs particles
+Accuracy vs θ
+GPU vs CPU
+OpenMP scaling
+CUDA scaling
+🎥 Demo
+
+A short video showing:
+
+Galaxy simulation
+        ↓
+Change particle count
+        ↓
+Change θ
+        ↓
+Switch CPU → CUDA
+        ↓
+Show performance difference
+🏁 Final Architecture
+
+Ultimately, you're aiming for:
+
+                    N-BODY SIMULATION
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+          EXACT                    BARNES-HUT
+        O(N²)                     O(N log N)
+             │                           │
+       ┌─────┴─────┐             ┌───────┴───────┐
+       │           │             │               │
+      CPU         CUDA          CPU             CUDA
+       │           │             │               │
+       │           │          OpenMP             │
+       │           │             │               │
+       └─────┬─────┘             └───────┬───────┘
+             │                           │
+             └───────────┬───────────────┘
+                         │
+                    BENCHMARKING
+                         │
+             ┌───────────┼───────────┐
+             │           │           │
+          Runtime      Accuracy    Scaling
+             │           │           │
+             └───────────┼───────────┘
+                         │
+                    VISUALIZATION
+The order I'd personally use
+
+Don't skip around.
+
+① C++ N-body
+       ↓
+② Barnes-Hut CPU
+       ↓
+③ Accuracy + θ
+       ↓
+④ OpenMP
+       ↓
+⑤ CUDA N-body
+       ↓
+⑥ CUDA Barnes-Hut
+       ↓
+⑦ CUDA optimization
+       ↓
+⑧ n-dimensional version
+       ↓
+⑨ Benchmarking
+       ↓
+⑩ Visualization
+       ↓
+⑪ Research report
+🎯 And your first milestone is VERY small:
+
+Milestone #1:
+
+Get a 3D gravitational N-body simulation working in C++ using the naive O(N
+2
+) algorithm.
+
+Don't touch Barnes–Hut or CUDA yet.
+
+Once that works, we move to Phase 2 and build the Barnes–Hut tree together.

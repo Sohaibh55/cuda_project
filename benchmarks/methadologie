@@ -1,0 +1,11 @@
+
+
+Préchauffage : 3-5 runs du noyau.
+2. Invalider le cache L2 entre chaque run.
+3. Mesurer N runs avec événements CUDA.
+4. Calculer médiane et CV.
+5. Si CV > 5% : ajouter des runs.
+6. Détecter et retirer les aberrants (MAD, k = 3).
+7. Recalculer médiane + IC à 95%.
+8. Comparer les implémentations avec le test t de Student.
+9. Documenter : matériel, logiciel, paramètres, méthodologie, résultats
