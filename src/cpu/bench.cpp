@@ -1,4 +1,3 @@
-
 #include "header.h"
 #include <chrono>
 
@@ -7,6 +6,7 @@
 vector<particle> loadParticles(const string& filename) {
     ifstream in(filename);
     if (!in) throw runtime_error("could not open " + filename);
+   
     vector<particle> particles;
     readParticles(in, particles);
     return particles;

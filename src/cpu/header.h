@@ -48,17 +48,19 @@ float inverse_d_3(const float& d_2);
 
 void initial_acceleration(particle& A);
 
-void acceleration(const float &G ,float* r_vector, particle& A,particle& B);
+void acceleration(float* r_vector, particle& A,particle& B);
     
-void update_velocity(particle& A ,const float& delta_t);
+void update_velocity(particle& A);
 
-void update_position(particle& A ,const float& delta_t);
+void update_position(particle& A);
 
-void integrate(const float& delta_t,vector<particle>&  particles );
+void integrate(vector<particle>&  particles );
 
-void calculate_accelerations(const float& G, vector<particle>& particles);
+void calculate_accelerations( vector<particle>& particles);
 
 void display(const vector<particle>& P);
 
 void readParticles(istream& in,vector<particle>& Particles);
+
+
 

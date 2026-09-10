@@ -1,45 +1,19 @@
-# === Config ===
-CXX      := g++
-CXXFLAGS := -std=c++17 -Wall -Wextra -O2
-LDFLAGS  :=
+CXX := g++
 
-TARGET   := main
-SRCS     := main.cpp nbody.cpp bench.cpp
-OBJS     := $(SRCS:.cpp=.o)
-DEPS     := $(OBJS:.o=.d)
-
-
-
-# === Default target ===
+TARGET := main 
+SRC := main.cpp nbody.cpp bench.cpp
+OBJ := $(SRC:.cpp=.o) 
 
 all: $(TARGET)
+	@./$<
 
-# === Link ===
-$(TARGET): $(OBJS)
-	@$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $@
 
-# === Compile with auto dependency generation ===
-%.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+%.o:%.cpp 
+	$(CXX) -c $< -o $@
 
--include $(DEPS)
-
-# === Run ===
-
-run: $(TARGET)
-	@./$(TARGET) 
-
-
-# === Debug build ===
-debug: CXXFLAGS := -std=c++17 -Wall -Wextra -g -O0 -fsanitize=address,undefined
-debug: LDFLAGS  := -fsanitize=address,undefined
-debug: clean $(TARGET)
-
-
-# === Cleanup ===
 clean:
-	@rm -f $(TARGET) $(OBJS) $(DEPS)
+	@rm -f $(OBJ) $(TARGET)
 
-rebuild: clean all
-
-.PHONY: all run debug clean
+.PHONY: all clean 

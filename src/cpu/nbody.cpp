@@ -23,7 +23,7 @@ void initial_acceleration(particle& A) {
     A.az = 0;
 }
 
-void acceleration(const float &G ,float* r_vector, particle& A,particle& B){
+void acceleration(float* r_vector, particle& A,particle& B){
 
     
     r(A,B,r_vector);
@@ -31,36 +31,36 @@ void acceleration(const float &G ,float* r_vector, particle& A,particle& B){
     float d_2 = softned_squared_dis(r_vector);
     float inv_d_3 = inverse_d_3(d_2);
 
-    A.ax += G * B.mass * r_vector[0] * inv_d_3; 
-    A.ay += G * B.mass * r_vector[1] * inv_d_3; 
-    A.az += G * B.mass * r_vector[2] * inv_d_3; 
+    A.ax += G_CONST * B.mass * r_vector[0] * inv_d_3; 
+    A.ay += G_CONST * B.mass * r_vector[1] * inv_d_3; 
+    A.az += G_CONST * B.mass * r_vector[2] * inv_d_3; 
 
 }
     
-void update_velocity(particle& A ,const float& delta_t) {
+void update_velocity(particle& A ) {
 
-    A.Vx += A.ax * delta_t ;
-    A.Vy += A.ay * delta_t ;
-    A.Vz += A.az * delta_t ;
+    A.Vx += A.ax * DELTA_T ;
+    A.Vy += A.ay * DELTA_T ;
+    A.Vz += A.az * DELTA_T ;
 }
 
-void update_position(particle& A ,const float& delta_t) {
-    A.x += A.Vx * delta_t;
-    A.y += A.Vy * delta_t;
-    A.z += A.Vz * delta_t;
+void update_position(particle& A) {
+    A.x += A.Vx * DELTA_T;
+    A.y += A.Vy * DELTA_T;
+    A.z += A.Vz * DELTA_T;
 }
 
-void integrate(const float& delta_t,vector<particle>&  particles ) {
+void integrate(vector<particle>&  particles ) {
 
     size_t N = particles.size();
 
     for(size_t i = 0 ; i < N; i++) 
-        update_velocity(particles[i],delta_t);
+        update_velocity(particles[i]);
     for(size_t i = 0 ; i < N; i++) 
-        update_position(particles[i],delta_t);   
+        update_position(particles[i]);   
 }
 
-void calculate_accelerations(const float &G, vector<particle>& particles){
+void calculate_accelerations(vector<particle>& particles){
     
     size_t N = particles.size();
     float r_vector[3];
@@ -73,7 +73,7 @@ void calculate_accelerations(const float &G, vector<particle>& particles){
          
             if(i == j) continue;
 
-            acceleration(G, r_vector , particles[i], particles[j]);   
+            acceleration( r_vector , particles[i], particles[j]);   
         }
     }    
 }
