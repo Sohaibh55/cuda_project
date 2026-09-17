@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/main.dir/link.d CMakeFiles/main.dir/bench_cpu.cpp.o CMakeFiles/main.dir/nbody_cpu.cpp.o CMakeFiles/main.dir/main_cpu.cpp.o CMakeFiles/main.dir/home/Sohaib/cuda/src/utils.cpp.o -o main

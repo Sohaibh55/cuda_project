@@ -1,0 +1,1 @@
+-I/home/Sohaib/cuda/validations/../include -I/home/Sohaib/cuda/validations/../src/cpu -I/home/Sohaib/cuda/validations/../src/gpu -isystem "/opt/cuda/targets/x86_64-linux/include" -isystem "/opt/cuda/targets/x86_64-linux/include/cccl"

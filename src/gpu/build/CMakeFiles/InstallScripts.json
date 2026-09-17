@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/Sohaib/cuda/src/gpu/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

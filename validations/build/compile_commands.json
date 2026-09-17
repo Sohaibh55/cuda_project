@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/Sohaib/cuda/validations/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler -DINPUT_PATH=\\\"/home/Sohaib/cuda/validations/../test/\\\" --options-file CMakeFiles/valid.dir/includes_CUDA.rsp -std=c++11 \"--generate-code=arch=compute_89,code=[compute_89,sm_89]\" -x cu -c /home/Sohaib/cuda/validations/correctness.cu -o CMakeFiles/valid.dir/correctness.cu.o",
+  "file": "/home/Sohaib/cuda/validations/correctness.cu",
+  "output": "CMakeFiles/valid.dir/correctness.cu.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/validations/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/validations/../test/\\\" -I/home/Sohaib/cuda/validations/../include -I/home/Sohaib/cuda/validations/../src/cpu -I/home/Sohaib/cuda/validations/../src/gpu -isystem /opt/cuda/targets/x86_64-linux/include -isystem /opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++11 -o CMakeFiles/valid.dir/main_val.cpp.o -c /home/Sohaib/cuda/validations/main_val.cpp",
+  "file": "/home/Sohaib/cuda/validations/main_val.cpp",
+  "output": "CMakeFiles/valid.dir/main_val.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/validations/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/validations/../test/\\\" -I/home/Sohaib/cuda/validations/../include -I/home/Sohaib/cuda/validations/../src/cpu -I/home/Sohaib/cuda/validations/../src/gpu -isystem /opt/cuda/targets/x86_64-linux/include -isystem /opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++11 -o CMakeFiles/valid.dir/home/Sohaib/cuda/src/utils.cpp.o -c /home/Sohaib/cuda/src/utils.cpp",
+  "file": "/home/Sohaib/cuda/src/utils.cpp",
+  "output": "CMakeFiles/valid.dir/home/Sohaib/cuda/src/utils.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/validations/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/validations/../test/\\\" -I/home/Sohaib/cuda/validations/../include -I/home/Sohaib/cuda/validations/../src/cpu -I/home/Sohaib/cuda/validations/../src/gpu -isystem /opt/cuda/targets/x86_64-linux/include -isystem /opt/cuda/targets/x86_64-linux/include/cccl -std=gnu++11 -o CMakeFiles/valid.dir/home/Sohaib/cuda/src/cpu/nbody_cpu.cpp.o -c /home/Sohaib/cuda/src/cpu/nbody_cpu.cpp",
+  "file": "/home/Sohaib/cuda/src/cpu/nbody_cpu.cpp",
+  "output": "CMakeFiles/valid.dir/home/Sohaib/cuda/src/cpu/nbody_cpu.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/validations/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler -DINPUT_PATH=\\\"/home/Sohaib/cuda/validations/../test/\\\" --options-file CMakeFiles/valid.dir/includes_CUDA.rsp -std=c++11 \"--generate-code=arch=compute_89,code=[compute_89,sm_89]\" -x cu -c /home/Sohaib/cuda/src/gpu/nbody_gpu.cu -o CMakeFiles/valid.dir/home/Sohaib/cuda/src/gpu/nbody_gpu.cu.o",
+  "file": "/home/Sohaib/cuda/src/gpu/nbody_gpu.cu",
+  "output": "CMakeFiles/valid.dir/home/Sohaib/cuda/src/gpu/nbody_gpu.cu.o"
+}
+]

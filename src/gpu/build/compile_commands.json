@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/Sohaib/cuda/src/gpu/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../benchmarks/result_gpu.csv\\\" --options-file CMakeFiles/main.dir/includes_CUDA.rsp -std=c++11 \"--generate-code=arch=compute_89,code=[compute_89,sm_89]\" -x cu -c /home/Sohaib/cuda/src/gpu/bench_gpu.cu -o CMakeFiles/main.dir/bench_gpu.cu.o",
+  "file": "/home/Sohaib/cuda/src/gpu/bench_gpu.cu",
+  "output": "CMakeFiles/main.dir/bench_gpu.cu.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/gpu/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../benchmarks/result_gpu.csv\\\" --options-file CMakeFiles/main.dir/includes_CUDA.rsp -std=c++11 \"--generate-code=arch=compute_89,code=[compute_89,sm_89]\" -x cu -c /home/Sohaib/cuda/src/gpu/nbody_gpu.cu -o CMakeFiles/main.dir/nbody_gpu.cu.o",
+  "file": "/home/Sohaib/cuda/src/gpu/nbody_gpu.cu",
+  "output": "CMakeFiles/main.dir/nbody_gpu.cu.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/gpu/build",
+  "command": "/opt/cuda/bin/nvcc -forward-unknown-to-host-compiler -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../benchmarks/result_gpu.csv\\\" --options-file CMakeFiles/main.dir/includes_CUDA.rsp -std=c++11 \"--generate-code=arch=compute_89,code=[compute_89,sm_89]\" -x cu -c /home/Sohaib/cuda/src/gpu/main_gpu.cu -o CMakeFiles/main.dir/main_gpu.cu.o",
+  "file": "/home/Sohaib/cuda/src/gpu/main_gpu.cu",
+  "output": "CMakeFiles/main.dir/main_gpu.cu.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/gpu/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/gpu/../../benchmarks/result_gpu.csv\\\" -I/home/Sohaib/cuda/src/gpu/../../include -std=gnu++11 -o CMakeFiles/main.dir/home/Sohaib/cuda/src/utils.cpp.o -c /home/Sohaib/cuda/src/utils.cpp",
+  "file": "/home/Sohaib/cuda/src/utils.cpp",
+  "output": "CMakeFiles/main.dir/home/Sohaib/cuda/src/utils.cpp.o"
+}
+]

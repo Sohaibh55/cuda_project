@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/Sohaib/cuda/src/cpu/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../benchmarks/result_cpu.csv\\\" -I/home/Sohaib/cuda/src/cpu/../../include -std=gnu++11 -o CMakeFiles/main.dir/bench_cpu.cpp.o -c /home/Sohaib/cuda/src/cpu/bench_cpu.cpp",
+  "file": "/home/Sohaib/cuda/src/cpu/bench_cpu.cpp",
+  "output": "CMakeFiles/main.dir/bench_cpu.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/cpu/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../benchmarks/result_cpu.csv\\\" -I/home/Sohaib/cuda/src/cpu/../../include -std=gnu++11 -o CMakeFiles/main.dir/nbody_cpu.cpp.o -c /home/Sohaib/cuda/src/cpu/nbody_cpu.cpp",
+  "file": "/home/Sohaib/cuda/src/cpu/nbody_cpu.cpp",
+  "output": "CMakeFiles/main.dir/nbody_cpu.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/cpu/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../benchmarks/result_cpu.csv\\\" -I/home/Sohaib/cuda/src/cpu/../../include -std=gnu++11 -o CMakeFiles/main.dir/main_cpu.cpp.o -c /home/Sohaib/cuda/src/cpu/main_cpu.cpp",
+  "file": "/home/Sohaib/cuda/src/cpu/main_cpu.cpp",
+  "output": "CMakeFiles/main.dir/main_cpu.cpp.o"
+},
+{
+  "directory": "/home/Sohaib/cuda/src/cpu/build",
+  "command": "/usr/bin/c++ -DINPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../test/\\\" -DOUTPUT_PATH=\\\"/home/Sohaib/cuda/src/cpu/../../benchmarks/result_cpu.csv\\\" -I/home/Sohaib/cuda/src/cpu/../../include -std=gnu++11 -o CMakeFiles/main.dir/home/Sohaib/cuda/src/utils.cpp.o -c /home/Sohaib/cuda/src/utils.cpp",
+  "file": "/home/Sohaib/cuda/src/utils.cpp",
+  "output": "CMakeFiles/main.dir/home/Sohaib/cuda/src/utils.cpp.o"
+}
+]

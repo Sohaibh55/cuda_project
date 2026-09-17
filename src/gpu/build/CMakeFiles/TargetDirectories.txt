@@ -1,0 +1,3 @@
+/home/Sohaib/cuda/src/gpu/build/CMakeFiles/main.dir
+/home/Sohaib/cuda/src/gpu/build/CMakeFiles/edit_cache.dir
+/home/Sohaib/cuda/src/gpu/build/CMakeFiles/rebuild_cache.dir
