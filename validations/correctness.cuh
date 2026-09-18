@@ -13,5 +13,9 @@ struct Error {
 };
 
 
-Error compare(const vector<particle>& particle_cpu, const vector<particle>& particle_gpu);
+// Error compare(const vector<particle>& particle_cpu, const vector<particle>& particle_gpu);
+// Error check_correctness(vector<particle> particle_cpu);
+
+Error compare(const vector<particle>& particle_cpu,
+              const vector<particle>& particle_gpu);
 Error check_correctness(vector<particle> particle_cpu);

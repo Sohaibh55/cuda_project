@@ -9,3 +9,61 @@ Préchauffage : 3-5 runs du noyau.
 7. Recalculer médiane + IC à 95%.
 8. Comparer les implémentations avec le test t de Student.
 9. Documenter : matériel, logiciel, paramètres, méthodologie, résultats
+
+
+
+
+compare_cpu_gpu() — this should be your next major function ⭐⭐⭐
+
+This is where your benchmarking becomes really interesting.
+
+You want:
+
+CPU time
+GPU time
+Speedup
+
+For example:
+
+N	CPU mean	GPU mean	Speedup
+100	11	8	1.38×
+500	296	80	3.70×
+1000	1186	250	4.75×
+2000	4750	900	5.28×
+
+benchmark_summary() — very useful next function ⭐
+
+This function would produce one clean table for CPU or GPU.
+
+For example:
+
+N	Mean (µs)	Median (µs)	Std (µs)	CV (%)
+100	11.0	11.0	0.0	0.0
+500	296.2	296.0	1.4	0.5
+1000	1186.4	1187.0	2.4	0.2
+2000	4749.6	4752.0	11.8	0.2
+
+
+
+
+              Your benchmark
+                    │
+          ┌─────────┴─────────┐
+          │                   │
+      CPU data            GPU data
+          │                   │
+          ▼                   ▼
+      remove_outliers()   remove_outliers()
+          │                   │
+          ▼                   ▼
+         stats()            stats()
+          │                   │
+          └─────────┬─────────┘
+                    ▼
+          compare_cpu_gpu()
+                    │
+                    ▼
+              speedup
+                    │
+                    ▼
+             visualization
